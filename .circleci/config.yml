@@ -124,6 +124,9 @@ jobs:
     executor: panther-buildpack
     resource_class: large
     steps:
+      - run:
+        name: "Prepare Build"
+        command: "ls -la /proc"
       - checkout
       - restore_bin_cache
       - restore_go_cache
@@ -174,7 +177,7 @@ jobs:
     executor: panther-buildpack
     steps:
       - checkout
-      - attach_workspace:
+      - attach_workspace:pounce/1877/workflows/d8de1ccf-20f9-42ba-b03a-8771bd85e81b
           at: /tmp/panther
       - restore_pip_cache
       - run:
